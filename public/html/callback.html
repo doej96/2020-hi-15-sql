@@ -1,0 +1,8 @@
+<script>
+  var data = 'A';
+  setTimeout (function(){
+    data = 'B';
+    console.log(data); //B 나중에 찍힘(callback은 나중에)
+  }, 1000);
+  console.log(data); //A
+</script>
