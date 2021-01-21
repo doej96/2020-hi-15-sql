@@ -12,10 +12,15 @@ app.locals.pretty = true;
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+//도시 리스트
 app.get('/city', (req, res) => {
-  res.send('/city');
+  const pug = {
+    file: 'city',
+  }
+  res.render('city/list', pug);
 })
 
+//도시 등록
 app.get('/city/create', (req, res) => {
   res.send('/city/create');
 })
