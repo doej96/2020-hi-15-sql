@@ -1,5 +1,6 @@
 {
-    "editor.fontSize": 21,
+    "editor.fontSize": 20,
     "editor.fontFamily": "'D2Coding'",
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on"
 }
