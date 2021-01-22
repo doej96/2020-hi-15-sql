@@ -21,14 +21,36 @@ router.get('/create', (req, res) => {
 })
 
 //도시 등록(저장)
-router.get('/save', (req, res) => {
-  const { name, lat, lon, population, summary } = req.query;
+router.post('/save', (req, res) => {
+  const { name, lat, lon, population, summary } = req.body;
   const sql = "INSERT INTO city SET name=?, lat=?, lon=?, population=?, summary=?"
   const value = [name, lat, lon, population, summary];
   const onQuery = (err, r) => {
     res.redirect('/city');
   }
   connection.query(sql, value, onQuery);
+})
+
+//도시 삭제
+router.get('/remove/:id', (req, res) => { //주소줄로 가변주소 받을 때 :('/remove/:id'), req.params.id
+  const sql = 'DELETE FROM city WHERE id='+req.params.id;
+  const onQuery = (err, r) => {
+    res.redirect('/city');
+  }
+  connection.query(sql, onQuery);
+})
+
+// 도시 수정
+router.get('/update/:id', (req, res) => {
+  const sql = 'SELECT * FROM city WHERE id='+req.params.id;
+  const onQuery = (err, r) => {
+    res.render('city/update', { file: 'city', r: r[0] })
+  } 
+  connection.query(sql, onQuery); 
+});
+
+router.post('/update', (req, res) => {
+  
 })
 
 module.exports = router;

@@ -1,0 +1,32 @@
+extends ../layout/default.pug
+
+block content
+  .wrapper
+    h2.title 도시수정
+    .wr-wrapper.border.rounded.p-4
+      form(action="/city/update" method="post" onsubmit="return onUpdate(this);")
+        input(type="hidden" name="id" value=`${r.id}`)
+        table.table
+          tbody
+            tr
+              td 도시명
+              td
+                input.form-control(type="text" name="name" placeholder="도시명" value=`${r.name}`)
+            tr
+              td 위치
+              td.form-inline
+                input.form-control(type="number" min="-90" max="90" name="lat" placeholder="위도" value=`${r.lat}`)
+                span.mx-3 /
+                input.form-control(type="number" min="-180" max="180" name="lon" placeholder="경도" value=`${r.lon}`)
+            tr
+              td 인구수
+              td
+                input.form-control(type="number" min="0" name="population" placeholder="인구수" value=`${r.population}`)
+            tr
+              td 설명
+              td
+                textarea.form-control(name="summary" placeholder="도시설명")= r.summary
+        .text-center
+          button.btn.btn-success 도시수정
+          button.btn.btn-danger(type="reset") 다시작성
+          
