@@ -80,6 +80,7 @@ router.get('/remove/:id', function (req, res) {
 
   connection.query(sql, onQuery);
 }); // 도시 수정
+// -수정하는 페이지
 
 router.get('/update/:id', function (req, res) {
   var sql = 'SELECT * FROM city WHERE id=' + req.params.id;
@@ -92,6 +93,24 @@ router.get('/update/:id', function (req, res) {
   };
 
   connection.query(sql, onQuery);
+}); // -수정하고 저장
+
+router.post('/update', function (req, res) {
+  //res.json(req.body);
+  var _req$body2 = req.body,
+      name = _req$body2.name,
+      lat = _req$body2.lat,
+      lon = _req$body2.lon,
+      population = _req$body2.population,
+      summary = _req$body2.summary,
+      id = _req$body2.id;
+  var sql = 'UPDATE city SET name=?, lat=?, lon=?, population=?, summary=? WHERE id=?';
+  var value = [name, lat, lon, population, summary, id];
+
+  var onQuery = function onQuery(err, r) {
+    res.redirect('/city');
+  };
+
+  connection.query(sql, value, onQuery);
 });
-router.post('/update', function (req, res) {});
 module.exports = router;

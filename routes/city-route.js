@@ -41,6 +41,7 @@ router.get('/remove/:id', (req, res) => { //주소줄로 가변주소 받을 때
 })
 
 // 도시 수정
+// -수정하는 페이지
 router.get('/update/:id', (req, res) => {
   const sql = 'SELECT * FROM city WHERE id='+req.params.id;
   const onQuery = (err, r) => {
@@ -49,8 +50,16 @@ router.get('/update/:id', (req, res) => {
   connection.query(sql, onQuery); 
 });
 
+// -수정하고 저장
 router.post('/update', (req, res) => {
-  
+  //res.json(req.body);
+  const { name, lat, lon, population, summary, id } = req.body;
+  const sql = 'UPDATE city SET name=?, lat=?, lon=?, population=?, summary=? WHERE id=?';
+  const value = [name, lat, lon, population, summary, id];
+  const onQuery = (err, r) => {
+    res.redirect('/city');
+  }
+  connection.query(sql, value, onQuery); 
 })
 
 module.exports = router;
