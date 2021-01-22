@@ -48,7 +48,7 @@ router.get('/', function (req, res) {
 }); //도시 등록
 
 router.get('/create', function (req, res) {
-  res.render('/city/create', {
+  res.render('city/create', {
     file: 'city'
   });
 }); //도시 등록(저장)

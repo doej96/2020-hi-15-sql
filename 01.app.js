@@ -6,7 +6,7 @@ const { mysql, connection } = require('./modules/mysql-conn');
 const cityRouter = require('./routes/city-route')
 
 const app = express();
-app.listen(3000, () => {console.log('//127.0.0.1:3000')});
+app.listen(3000, () => {console.log('http://127.0.0.1:3000')});
 
 app.set('view engine', 'pug');
 app.set('veiws', path.join(__dirname, 'views'));

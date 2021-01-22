@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 //도시 등록
 router.get('/create', (req, res) => {
-  res.render('/city/create', {file : 'city'});
+  res.render('city/create', {file : 'city'});
 })
 
 //도시 등록(저장)
