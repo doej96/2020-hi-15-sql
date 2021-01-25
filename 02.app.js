@@ -1,4 +1,5 @@
 /************ 전역선언 ************/
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -8,7 +9,7 @@ const { err } = require('./modules/util')
 const bookRouter = require('./routes/book-route')
 
 /************ 서버실행 ************/
-app.listen(3000, () => {console.log('http://127.0.0.1:3000')});
+app.listen(process.env.PORT, () => {console.log(`http://127.0.0.1:${process.env.PORT}`)});
 
 /************ PUG설정 ************/
 app.set('view engine', 'pug');
