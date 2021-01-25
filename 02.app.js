@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 
 /************ 라우터 불러오기 ************/
-const cityRouter = require('./routes/city-route')
+const bookRouter = require('./routes/book-route')
 
 /************ 서버실행 ************/
 app.listen(3000, () => {console.log('http://127.0.0.1:3000')});
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false })); //json이 parsing
 
 /************ 라우터 구현 ************/
 app.use('/', express.static(path.join(__dirname, 'public')));
-app.use('/city', cityRouter);
+app.use('/book', bookRouter);
 // middlewear : front와 backEnd 사이에 있음
 // '/' -> middlewear
 

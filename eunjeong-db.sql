@@ -1,1 +1,8 @@
--- eunjeongINSERT INTO	books SET
+-- INSERT INTO city SET
+-- NAME='Pusan',
+-- country='Korea',
+-- summary='한국의 제2의 도시-항구도시로 유명하다.',
+-- lat=34.87,
+-- lon=127.5,
+-- population=40000000,
+-- sdate='1000-01-01';
