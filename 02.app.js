@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const { err } = require('./modules/util')
 
 /************ 라우터 불러오기 ************/
 const bookRouter = require('./routes/book-route')
@@ -31,9 +32,9 @@ app.use('/book', bookRouter);
 
 /************ 에러처리 ************/
 app.use((req, res, next) => { //not found
-  res.send('/404');
+  next(err(404))
 })
 
 app.use((err, req, res, next) => { //error
-  res.send(err);
+  res.render('error', err);
 })

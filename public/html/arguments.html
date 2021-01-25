@@ -1,0 +1,37 @@
+<script>
+  function err(code, msg, title) {
+    if(arguments.length == 3) {
+      return {code, msg, title} //->ES5: {code: code, msg: msg, title: title}
+    }
+    else if(arguments.length == 2) {
+      if(typeof code == "number") return {code, msg, title: 'ERROR '+code}
+      // err('Syntax Error', 'Error:500')
+      else return {code: 500, msg: code, title: msg}
+    }
+    else if(arguments.length == 1) {
+      if(typeof code == "number") {
+        return {
+          code,
+          msg : 'Server Internal Error - 서버내부오류',
+          title : 'ERROR '+code
+        }
+      }
+      else {
+        
+      }
+    }
+    /* if(title) {
+      if(typeof title === "number")
+    }
+    else { //아무것도 안들어왔을 때(하나라도 들어오면 title인자로 가니까)
+      return {
+        title: 'ERROR 500',
+        code: 500,
+        msg: 'Server Internal Error - 서버내부오류'
+      }
+    } */
+  }
+
+  err(404); //console.log(arguments) -> Arguments(1) = : arguments.length == 1, 인자 하나이기 때문
+  err(404, '에러입니다.', title)
+</script>
