@@ -30,6 +30,10 @@ app.use('/book', bookRouter);
 // '/' -> middlewear
 
 /************ 에러처리 ************/
-app.use((req, res) => {
+app.use((req, res, next) => { //not found
   res.send('/404');
+})
+
+app.use((err, req, res, next) => { //error
+  res.send(err);
 })
